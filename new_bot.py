@@ -90,14 +90,16 @@ def __payabled(message):
     else:
         bot.send_message(message.chat.id, f'Не верный формат сообщения, отправь либо фото, либо текст')
         bot.register_next_step_handler(message, __payabled)
-        # __payabled(message)
-            
+
+
 def payable(message):
     bot.send_message(message.chat.id, payable_1, reply_markup=key_board_user_payable())
-    
+
+
 def access_payable(message):
     bot.send_message(message.chat.id, 'Отправь нам чек после оплаты, или имя фамилию', reply_markup=keyboard_disabled())
     bot.register_next_step_handler(message, sended_payable)
+
 
 def sended_payable(message) :
     if message.content_type == 'text' and message.text == keyboard_disabled_1:
@@ -115,16 +117,15 @@ def sended_payable(message) :
     else:
         bot.send_message(message.chat.id, f'Не верный формат сообщения, отправь либо фото, либо текст')
         access_payable(message)
-     
-     
+
+
 def make_ref_link_data(message):
     _db.set_payable_data(message.chat.id, message.text)
     bot.send_message(message.chat.id, link_s, reply_markup=keyboard_menu())
     bot.send_message(message.chat.id, link, reply_markup=key_board_share_for_frends_and_help(message.chat.id))
     bot.delete_message(message.chat.id, message_id = message.message_id-1) # удаляем кнопки у последнего сообщения
-    # if message.text == 'Не сейчас':
-    
-         
+
+
 def make_ref_link_data_start(message):
     bot.send_message(message.chat.id, text_take_ref_link, reply_markup=go_back_in_menu())
     bot.register_next_step_handler(message, make_ref_link_data)
@@ -270,8 +271,7 @@ def get_text_messages(message):
             _db.add_ref_for_user(ref_code)
             text = new_user_1 if data_created else last_user_1
             bot.send_message(message.chat.id, text)
-    # bot.send_message(message.chat.id, 'menu', reply_markup=key_board_share_for_frends(message.chat.id))
-    bot.send_message(message.chat.id, 'С возвращением в меню', reply_markup=keyboard_menu())
+        bot.send_message(message.chat.id, 'С возвращением в меню', reply_markup=keyboard_menu())
 
  
 @bot.message_handler(content_types=['text'])
