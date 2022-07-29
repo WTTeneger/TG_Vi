@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": "../../SiteDV"
+		},
+		{
+			"path": "../../SiteDV1"
+		},
+		{
+			"path": "."
+		},
+		{
+			"path": "../../durger-king-master"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "SiteDV"
+	}
+}
