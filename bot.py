@@ -125,6 +125,7 @@ def get_text_messages(message):
         payable(message)
     
     if message.text == keyboard_menu_3:
+        print(message.chat.id)
         user =_db.get_all_info(message.chat.id)
         total_sup = 100
         bot.send_message(message.chat.id, 
@@ -134,7 +135,7 @@ def get_text_messages(message):
                             count_ref_pay =  user['count_payable_refferal'],
                             balance = user['count_refferal']*total_sup), 
                          reply_markup=key_board_share_for_frends(message.chat.id))
-
+ 
 def webAppKeyboard(): #создание клавиатуры с webapp кнопкой
    keyboard = types.ReplyKeyboardMarkup(row_width=1) #создаем клавиатуру
    webAppTest = types.WebAppInfo("https://telegram.mihailgok.ru") #создаем webappinfo - формат хранения url

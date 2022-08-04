@@ -72,7 +72,7 @@ class dbmethods(DB):
         with self.db.cursor() as cursor:
             try:
                 sql = f"SELECT * FROM `user` WHERE `user`.`tgid` = {tgid};"
-                # print(sql)
+                print(sql)
                 cursor.execute(sql)
                 result = cursor.fetchone()
                 # print(result)
